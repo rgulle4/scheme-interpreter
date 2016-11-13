@@ -6,7 +6,7 @@ namespace Tree
 {
     public class Begin : Special
     {
-	public Begin() { }
+        public Begin() { }
 
         public override void print(Node t, int n, bool p)
         {

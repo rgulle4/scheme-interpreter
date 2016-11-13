@@ -2,11 +2,11 @@
 
 ;; This file must be loaded before scheme.scm.
 ;; For loading the file, you can either use the command
-;;	,load top-level.scm
+;;        ,load top-level.scm
 ;; or
-;;	(load "top-level.scm")
+;;        (load "top-level.scm")
 ;; or
-;;	(load 'top-level)
+;;        (load 'top-level)
 ;; Similarly for loading printenv.scm and scheme.scm.
 
 ;; You can get in and out of scheme48 and your interpreter as follows:
@@ -46,12 +46,12 @@
   ; Parse the input.
   (let ((input (read)))
     (if (eof-object? input)
-	(newline)
-	(begin
-	  ; Evaluate the expression and print the result.
-	  (write (eval input global-environment))
-	  (newline)
-	  (scheme)))))
+        (newline)
+        (begin
+          ; Evaluate the expression and print the result.
+          (write (eval input global-environment))
+          (newline)
+          (scheme)))))
 
 
 ;; Load a file into the global environment.
@@ -61,12 +61,12 @@
   (define (loadenv1 file port env)
     (let ((input (read port)))
       (if (eof-object? input)
-	  (begin
-	    (close-input-port port)
-	    (display file)
-	    (newline))
-	  (begin
-	    (eval input env)
-	    (loadenv1 file port env)))))
+          (begin
+            (close-input-port port)
+            (display file)
+            (newline))
+          (begin
+            (eval input env)
+            (loadenv1 file port env)))))
 
   (loadenv1 file (open-input-file file) global-environment))

@@ -6,7 +6,7 @@ namespace Tree
 {
     public class Quote : Special
     {
-	public Quote() { }
+        public Quote() { }
 
         public override void print(Node t, int n, bool p)
         {

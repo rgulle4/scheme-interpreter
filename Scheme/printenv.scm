@@ -30,7 +30,7 @@
 (define (printvalue v)
   (if (and (pair? v) (eq? (car v) 'closure))
       (begin
-	(display "(closure ")
-	(write (cadr v))
-	(display " ...)"))
+        (display "(closure ")
+        (write (cadr v))
+        (display " ...)"))
       (write v)))

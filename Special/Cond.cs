@@ -6,7 +6,7 @@ namespace Tree
 {
     public class Cond : Special
     {
-	public Cond() { }
+        public Cond() { }
 
         public override void print(Node t, int n, bool p)
         { 

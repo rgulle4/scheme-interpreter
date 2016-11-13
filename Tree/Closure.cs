@@ -15,18 +15,18 @@ namespace Tree
 {
     public class Closure : Node
     {
-        private Node fun;		// a lambda expression
-        private Environment env;	// the environment in which
-                                        // the function was defined
+        private Node fun;          // a lambda expression
+        private Environment env;   // the environment in which
+                                   // the function was defined
 
-        public Closure(Node f, Environment e)	{ fun = f;  env = e; }
+        public Closure(Node f, Environment e) { fun = f;  env = e; }
 
-        public Node getFun()		{ return fun; }
-        public Environment getEnv()	{ return env; }
+        public Node getFun() { return fun; }
+        public Environment getEnv() { return env; }
 
         // TODO: The method isProcedure() should be defined in
         // class Node to return false.
-        public /* override */ bool isProcedure()	{ return true; }
+        public /* override */ bool isProcedure() { return true; }
 
         public override void print(int n) {
             // there got to be a more efficient way to print n spaces

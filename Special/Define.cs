@@ -6,7 +6,7 @@ namespace Tree
 {
     public class Define : Special
     {
-	public Define() { }
+        public Define() { }
 
         public override void print(Node t, int n, bool p)
         {

@@ -30,11 +30,11 @@ This interpreter should implement
 - the I/O functions `read`, `write`, `display`, `newline` (without the optional _port_ argument);
 - the functions `eval`, `apply`, and `interaction-environment`.
 
-This should be built on top of [scheme-pp](https://github.com/rgulle4/scheme-pp).  
+This is built on top of working pretty-printer libraries `SPP.{dll,netmodule}`.
 
-The parse trees from that project should be used as the internal
-data structure for lists. The arithmetic and list operations would
-then be simply implemented by the appropriate C# operations on parse
+The parse trees from `SPP` should be used as the internal data
+structure for lists. The arithmetic and list operations would then
+be simply implemented by the appropriate C# operations on parse
 trees.
 
 The following built-in Scheme functions should call parts of this
@@ -48,11 +48,54 @@ interpreter:
 
 ## Environments
 
-See `proj2.pdf` for details.
+For keeping track of the values of variables during evaluation, we
+need a data structure for storing these values. That's the
+environment. Scheme is a language with nested scopes. Given the
+function definition:
+
+```scheme
+    (define (z x) (+ x y))
+    (define y 42)
+    (define x 17)
+```
+
+When evaluating the body of the function call `(z y)`, we need to
+look for the values of ` +,` `x`, and `y`. For each variable, we
+first look in the local function scope, then in the outer file
+scope, then in the scope containing the built-in function
+definitions. We will find `x` in the function scope, `y` in file
+scope, and `+ `in built-in scope `(+` is nothing special, it's a
+regular variable which has a function as its value). The environment
+data structure needs to be designed to allow this search.
+
+... _(More details in `proj2.pdf`)_ ...
 
 ## Evaluation
 
-See `proj2.pdf` for details.
+For evaluating Scheme programs, you will implement the two mutually
+recursive functions `eval` and `apply`. The main evaluation
+function, `eval`, takes two arguments, a Scheme expression and an
+environment. E.g., the call
+
+```scheme
+    (eval '(z y) env)
+```
+
+where `env` is defined as above, will result in the value `84`.
+
+The function `eval` needs to perform the following tasks:
+
+- extend the environment for variable or function definitions,
+- extend the environment for `let` expressions,
+- update the environment for `set!` assignments,
+- look up variables in the environment,
+- handle the special forms `quote`, `lambda`, `begin`, `if`, and `cond` (including the `else` keyword in `cond`), and
+- recursively call `apply` for function calls.
+
+Note that some of the special forms as well as some of the built-in
+functions do not return a value.
+
+... _(More details in `proj2.pdf`)_ ...
 
 ## Top-Level Loop
 
@@ -70,6 +113,10 @@ such as the following:
           (Scheme))
         (newline))))
 ```
+
+This top-level loop could either be implemented directly in C# or
+read from a file of Scheme definitions. It'll be easiest to
+implement this loop directly in your main function.
 
 ## References
 

@@ -275,11 +275,15 @@ __pycache__/
 # Ignore tmp/ directory made by reference test scripts
 **/tmp/
 
-# Ignore SPP.exe
-SPP.exe
+# Ignore Scheme4101.exe
+Scheme4101.exe
+Scheme4101-debug.exe
 
-# Include reference binary SPP-reference.exe
-!SPP-reference.exe
+# Ignore monodebug stuff
+*.mdb
+
+# Include reference binary Scheme4101-reference.exe
+!Scheme4101-reference.exe
 
 # Ignore our test outputs
 test/output*.txt

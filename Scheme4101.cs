@@ -55,6 +55,7 @@ public class Scheme4101
         // Read-eval-print loop
 
         // TODO: print prompt and evaluate the expression
+        Console.Write("> ");
         root = (Node) parser.parseExp();
         while (root != null) 
         {

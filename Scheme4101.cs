@@ -1,4 +1,4 @@
-// SPP -- The main program of the Scheme pretty printer.
+// Scheme4101 -- The main program of the Scheme interpreter
 
 using System;
 using Parse;
@@ -12,8 +12,8 @@ public class Scheme4101
         // Create scanner that reads from standard input
         Scanner scanner = new Scanner(Console.In);
         
-        if (args.Length > 1 ||
-            (args.Length == 1 && ! args[0].Equals("-d")))
+        if (args.Length > 1 || 
+                (args.Length == 1 && ! args[0].Equals("-d")))
         {
             Console.Error.WriteLine("Usage: mono SPP [-d]");
             return 1;
@@ -22,7 +22,6 @@ public class Scheme4101
         // If command line option -d is provided, debug the scanner.
         if (args.Length == 1 && args[0].Equals("-d"))
         {
-            // Console.Write("Scheme 4101> ");
             Token tok = scanner.getNextToken();
             while (tok != null)
             {
@@ -37,8 +36,6 @@ public class Scheme4101
                     Console.WriteLine(", name = " + tok.getName());
                 else
                     Console.WriteLine();
-
-                // Console.Write("Scheme 4101> ");
                 tok = scanner.getNextToken();
             }
             return 0;
@@ -47,19 +44,21 @@ public class Scheme4101
         // Create parser
         TreeBuilder builder = new TreeBuilder();
         Parser parser = new Parser(scanner, builder);
-        Node root;
 
-        // TODO: Create and populate the built-in environment and
-        // create the top-level environment
+        // TODO: Create and populate the built-in environment
+        Tree.Environment env = new Tree.Environment();
+
+        // TODO: create the top-level environment
 
         // Read-eval-print loop
 
-        // TODO: print prompt and evaluate the expression
+        // Print prompt and TODO: evaluate the expression
         Console.Write("> ");
-        root = (Node) parser.parseExp();
+        Node root = (Node) parser.parseExp();
         while (root != null) 
         {
             root.print(0);
+            Console.Write("> ");
             root = (Node) parser.parseExp();
         }
 

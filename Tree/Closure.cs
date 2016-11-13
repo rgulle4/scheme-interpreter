@@ -1,4 +1,4 @@
-// Closure.java -- the data structure for function closures
+// Closure -- the data structure for function closures
 
 // Class Closure is used to represent the value of lambda expressions.
 // It consists of the lambda expression itself, together with the
@@ -26,7 +26,7 @@ namespace Tree
 
         // TODO: The method isProcedure() should be defined in
         // class Node to return false.
-        public /* override */ bool isProcedure() { return true; }
+        public override bool isProcedure() { return true; }
 
         public override void print(int n) {
             // there got to be a more efficient way to print n spaces

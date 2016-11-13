@@ -1,4 +1,4 @@
-// Environment.java -- a data structure for Scheme environments
+// Environment -- a data structure for Scheme environments
 
 // An Environment is a list of frames.  Each frame represents a scope
 // in the program and contains a set of name-value pairs.  The first
@@ -39,8 +39,8 @@ namespace Tree
         // every list element (every frame) is an association list.
         // Instead of Nil(), we use null to terminate the list.
 
-        private Node frame;     	// the innermost scope, an assoc list
-	private Environment env;	// the enclosing environment
+        private Node frame;       // the innermost scope, an assoc list
+        private Environment env;  // the enclosing environment
    
         public Environment()
         {
@@ -49,12 +49,13 @@ namespace Tree
         }
    
         public Environment(Environment e)
-	{
+        {
             frame = Nil.getInstance();
             env = e;
         }
 
-        public override void print(int n) {
+        public override void print(int n) 
+        {
             // there got to be a more efficient way to print n spaces
             for (int i = 0; i < n; i++)
                 Console.Write(' ');
@@ -72,10 +73,9 @@ namespace Tree
         // translation of the Scheme assq function.
         private static Node find(Node id, Node alist)
         {
-            if (! alist.isPair())
-                return null;	// in Scheme we'd return #f
-            else
-            {
+            if (! alist.isPair()) {
+                return null;  // in Scheme we'd return #f
+            } else {
                 Node bind = alist.getCar();
                 if (id.getName().Equals(bind.getCar().getName()))
                     // return a list containing the value as only element
@@ -89,17 +89,16 @@ namespace Tree
         public Node lookup(Node id)
         {
             Node val = find(id, frame);
-            if (val == null && env == null)
-            {
+            if (val == null && env == null) {
                 Console.Error.WriteLine("undefined variable " + id.getName());
                 return null;
-            }
-            else if (val == null)
+            } else if (val == null) {
                 // look up the identifier in the enclosing scope
                 return env.lookup(id);
-            else
+            } else {
                 // get the value out of the list we got from find()
-		return val.getCar();
+                return val.getCar();
+            }
         }
 
 

@@ -19,15 +19,15 @@ namespace Tree
 {
     public class BuiltIn : Node
     {
-        private Node symbol;            // the Ident for the built-in function
+        private Node symbol;  // the Ident for the built-in function
 
         public BuiltIn(Node s) { symbol = s; }
 
         public Node getSymbol() { return symbol; }
 
-        // TODO: The method isProcedure() should be defined in
+        // The method isProcedure() should be defined in
         // class Node to return false.
-        public /* override */ bool isProcedure() { return true; }
+        public override bool isProcedure() { return true; }
 
         public override void print(int n)
         {

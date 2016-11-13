@@ -41,6 +41,7 @@ namespace Tree
         public virtual bool isSymbol() { return false; }  // Ident
         public virtual bool isNull()   { return false; }  // Nil
         public virtual bool isPair()   { return false; }  // Cons
+        public virtual bool isProcedure() { return false; } // BuiltIn, Closure
 
         // Since C# does not have covariant override, it is not possible
         // for the getCar and getCdr methods to implement the interface

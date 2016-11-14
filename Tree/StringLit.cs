@@ -7,6 +7,7 @@ namespace Tree {
         private string stringVal;
 
         public static bool QUOTES_SHOULD_BE_PRINTED = true;
+        public static bool SHOULD_PRINT_AT_ALL = true;
 
         public StringLit(string s) { stringVal = s; }
         public StringLit(string s, bool quotesShouldBePrinted) {
@@ -15,6 +16,8 @@ namespace Tree {
         }
 
         public override void print(int n) {
+            if (!SHOULD_PRINT_AT_ALL)
+                return;
             if (QUOTES_SHOULD_BE_PRINTED) {
                 Printer.printStringLit(n, stringVal);
             } else {

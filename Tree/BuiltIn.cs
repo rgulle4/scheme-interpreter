@@ -14,6 +14,7 @@
 // the function symbol.
 
 using System;
+using System.Collections;
 
 namespace Tree {
     public class BuiltIn : Node {
@@ -39,10 +40,75 @@ namespace Tree {
                 Console.WriteLine();
         }
 
+        private static Node todo(String name) {
+            return Node.nilNodeWithErrorMsg(
+                "TODO: BuiltIn " + name + "not implemented yet.");
+        }
+
         // This is overridden only in classes BuiltIn and Closure.
         // TODO: finish this
         public override Node apply(Node args) {
-            String name = symbol.getName();
+            String name = symbol.getName().ToLower();
+
+            ArrayList argsList = Node.getArgsList(args);
+            int numArgs = argsList.Count;
+
+            if (false) {
+                // noop, for now
+            } else if (name.Equals("symbol?") && numArgs == 1) {
+                return todo(name);
+            } else if (name.Equals("number?") && numArgs == 1) {
+                return todo(name);
+            } else if (name.Equals("b+") && numArgs == 2) {
+                return todo(name);
+            } else if (name.Equals("b-") && numArgs == 2) {
+                return todo(name);
+            } else if (name.Equals("b*") && numArgs == 2) {
+                return todo(name);
+            } else if (name.Equals("b/") && numArgs == 2) {
+                return todo(name);
+            } else if (name.Equals("b=") && numArgs == 2) {
+                return todo(name);
+            } else if (name.Equals("b<") && numArgs == 2) {
+                return todo(name);
+            } else if (name.Equals("car") && numArgs == 1) {
+                return todo(name);
+            } else if (name.Equals("cdr") && numArgs == 1) {
+                return todo(name);
+            } else if (name.Equals("cons") && numArgs == 1) {
+                return todo(name);
+            } else if (name.Equals("set-car!") && numArgs == 1) {
+                return todo(name);
+            } else if (name.Equals("set-cdr!") && numArgs == 1) {
+                return todo(name);
+            } else if (name.Equals("null?") && numArgs == 1) {
+                return todo(name);
+            } else if (name.Equals("pair?") && numArgs == 1) {
+                return todo(name);
+            } else if (name.Equals("eq?") && numArgs == 2) {
+                return todo(name);
+            } else if (name.Equals("procedure?") && numArgs == 1) {
+                return todo(name);
+            } else if (name.Equals("read") && numArgs == 0) {
+                return todo(name);
+            } else if (name.Equals("write") && numArgs == 1) {
+                return todo(name);
+            } else if (name.Equals("display") && numArgs == 1) {
+                return todo(name);
+            } else if (name.Equals("newline") && numArgs == 0) {
+                Console.WriteLine();
+                return new StringLit("#{Unspecific}");
+            } else if (name.Equals("eval") && numArgs == 2) {
+                return todo(name);
+            } else if (name.Equals("apply") && numArgs == 2) {
+                return todo(name);
+            } else if (name.Equals("interaction-environment") && numArgs == 0) {
+                return todo(name);
+            } else if (name.Equals("load") && numArgs == 1) {
+                return todo(name);
+            } else { 
+                return Node.nilNodeWithErrorMsg("ERROR: couldnt apply BuiltIn");
+            }
 
             // 1. get args
             // 2. return the actual result, depending on the name,
@@ -53,60 +119,62 @@ namespace Tree {
             // e.g. (b+ x y) returns IntLit(x + y)... (b+ x) should error
             // etc.
 
-            // +-------------------------+-----------------+
-            // | id                      | numArgs         |
-            // +=========================+=================+
-            // | symbol?                 | 1               |
-            // +-------------------------+-----------------+
-            // | number?                 | 1: int          |
-            // +-------------------------+-----------------+
-            // | b+                      | 2: int, int     |
-            // +-------------------------+-----------------+
-            // | b-                      | 2: int, int     |
-            // +-------------------------+-----------------+
-            // | b*                      | 2: int int      |
-            // +-------------------------+-----------------+
-            // | b/                      | 2: int int      |
-            // +-------------------------+-----------------+
-            // | b=                      | 2: int int      |
-            // +-------------------------+-----------------+
-            // | b<                      | 2: int int      |
-            // +-------------------------+-----------------+
-            // | car                     | 1: list         |
-            // +-------------------------+-----------------+
-            // | cdr                     | 1: list         |
-            // +-------------------------+-----------------+
-            // | cons                    | 1: list         |
-            // +-------------------------+-----------------+
-            // | set-car!                | 1: list         |
-            // +-------------------------+-----------------+
-            // | set-cdr!                | 1: list         |
-            // +-------------------------+-----------------+
-            // | null?                   | 1: node         |
-            // +-------------------------+-----------------+
-            // | pair?                   | 1: node         |
-            // +-------------------------+-----------------+
-            // | eq?                     | 2: node         |
-            // +-------------------------+-----------------+
-            // | procedure?              | 1: node         |
-            // +-------------------------+-----------------+
-            // | read                    | 0               |
-            // +-------------------------+-----------------+
-            // | write                   | 1: StringLit?   |
-            // +-------------------------+-----------------+
-            // | display                 | 1: StringLit?   |
-            // +-------------------------+-----------------+
-            // | newline                 | 0               |
-            // +-------------------------+-----------------+
-            // | eval                    | 2: List Env     |
-            // +-------------------------+-----------------+
-            // | apply                   | 2: Closure List |
-            // +-------------------------+-----------------+
-            // | interaction-environment | 0               |
-            // +-------------------------+-----------------+
-            // | load                    | 1: filename     |
-            // +-------------------------+-----------------+
-            
+            // +---+-------------------------+-----------------+
+            // |   | id                      | numArgs         |
+            // +===+=========================+=================+
+            // |   | symbol?                 | 1               |
+            // +---+-------------------------+-----------------+
+            // |   | number?                 | 1: int          |
+            // +---+-------------------------+-----------------+
+            // |   | b+                      | 2: int, int     |
+            // +---+-------------------------+-----------------+
+            // |   | b-                      | 2: int, int     |
+            // +---+-------------------------+-----------------+
+            // |   | b*                      | 2: int int      |
+            // +---+-------------------------+-----------------+
+            // |   | b/                      | 2: int int      |
+            // +---+-------------------------+-----------------+
+            // |   | b=                      | 2: int int      |
+            // +---+-------------------------+-----------------+
+            // |   | b<                      | 2: int int      |
+            // +---+-------------------------+-----------------+
+            // |   | car                     | 1: list         |
+            // +---+-------------------------+-----------------+
+            // |   | cdr                     | 1: list         |
+            // +---+-------------------------+-----------------+
+            // |   | cons                    | 1: list         |
+            // +---+-------------------------+-----------------+
+            // |   | set-car!                | 1: list         |
+            // +---+-------------------------+-----------------+
+            // |   | set-cdr!                | 1: list         |
+            // +---+-------------------------+-----------------+
+            // |   | null?                   | 1: node         |
+            // +---+-------------------------+-----------------+
+            // |   | pair?                   | 1: node         |
+            // +---+-------------------------+-----------------+
+            // |   | eq?                     | 2: node         |
+            // +---+-------------------------+-----------------+
+            // |   | procedure?              | 1: node         |
+            // +---+-------------------------+-----------------+
+            // |   | read                    | 0               |
+            // +---+-------------------------+-----------------+
+            // |   | write                   | 1: StringLit?   |
+            // +---+-------------------------+-----------------+
+            // |   | display                 | 1: StringLit?   |
+            // +---+-------------------------+-----------------+
+            // | x | newline                 | 0               |
+            // +---+-------------------------+-----------------+
+            // |   | eval                    | 2: List Env     |
+            // +---+-------------------------+-----------------+
+            // |   | apply                   | 2: Closure List |
+            // +---+-------------------------+-----------------+
+            // |   | interaction-environment | 0               |
+            // +---+-------------------------+-----------------+
+            // |   | load                    | 1: filename     |
+            // +---+-------------------------+-----------------+
+
+
+
             return new StringLit("Error: BuiltIn.apply not yet implemented");
 
         }

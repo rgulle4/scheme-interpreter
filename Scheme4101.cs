@@ -52,7 +52,7 @@ public class Scheme4101 {
         Console.Write("> ");
         Node root = (Node) parser.parseExp();
         while (root != null)  {
-            root.print(0);
+            root.eval(env).print(0);
             Console.Write("> ");
             root = (Node) parser.parseExp();
         }

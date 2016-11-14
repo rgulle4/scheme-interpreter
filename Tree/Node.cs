@@ -1,6 +1,7 @@
 // Node -- Base class for parse tree node objects
 
 using System;
+using System.Collections;
 
 namespace Tree {
     public class Node : INode {
@@ -50,7 +51,16 @@ namespace Tree {
             return nilNodeWithErrorMsg("ERROR: cant do node.apply()");
         }
 
-        private static Node nilNodeWithErrorMsg(Object msg) {
+        public static ArrayList getArgsList(Node args) {
+            ArrayList argsList = new ArrayList();
+            while (!args.isNull()) {
+                argsList.Add(args.getCar());
+                args = args.getCdr();
+            }
+            return argsList;
+        }
+
+        public static Node nilNodeWithErrorMsg(Object msg) {
             Console.Error.WriteLine(msg);
             return Nil.getInstance();
         }

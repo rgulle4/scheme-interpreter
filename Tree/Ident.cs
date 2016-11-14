@@ -15,7 +15,9 @@ namespace Tree {
         public override String getName() { return name; }
         public override bool isSymbol() { return true; }
 
-        
+        public override Node eval(Environment env) {
+            return env.lookup(this);
+        }        
     }
 }
 

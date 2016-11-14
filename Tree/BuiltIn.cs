@@ -39,11 +39,21 @@ namespace Tree {
                 Console.WriteLine();
         }
 
-        // TODO: The method apply() should be defined in class Node
-        // to report an error.  It should be overridden only in classes
-        // BuiltIn and Closure.
+        // This is overridden only in classes BuiltIn and Closure.
+        // TODO: finish this
         public override Node apply(Node args) {
+            String name = symbol.getName();
+
+            // 1. get args
+            // 2. return the actual result, depending on the name,
+            //    using a monster if statement, making sure to get
+            //    it right for all the BuiltIns listed in 
+            //    Scheme4101.getBuiltInEnv()
+            //
+            // e.g. (b+ x y) returns IntLit(x + y)... (b+ x) should error
+            // etc.
             return new StringLit("Error: BuiltIn.apply not yet implemented");
+
         }
     }    
 }

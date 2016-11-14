@@ -6,10 +6,10 @@ EXE =   Scheme4101-debug.exe
 all: $(EXE)
 
 $(EXE): $(SRC) $(LIB)
-	mcs --debug /out:$(EXE) $(SRC) /addmodule:$(LIB)
+	mcs -debug /out:$(EXE) $(SRC) /addmodule:$(LIB)
 
 $(LIB): $(LIBSRC)
-	mcs --debug /target:module /out:$(LIB) $(LIBSRC)
+	mcs -debug /target:module /out:$(LIB) $(LIBSRC)
 
 clean:
 	@rm -f *~ */*~

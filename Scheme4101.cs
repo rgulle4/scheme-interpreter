@@ -9,6 +9,7 @@ using Environment = Tree.Environment;
 public class Scheme4101 {
 
     public static Parser parser;
+    public static Environment interactionEnv;
 
     public static int Main(string[] args) {
         // Create scanner that reads from standard input
@@ -47,7 +48,7 @@ public class Scheme4101 {
         // Create and populate the built-in environment and
         // create the top-level environment
         Environment builtInEnv = getBuiltInEnv();
-        Environment env = new Environment(builtInEnv);
+        interactionEnv = new Environment(builtInEnv);
 
         // Read-eval-print loop
 
@@ -55,7 +56,7 @@ public class Scheme4101 {
         Console.Write("> ");
         Node root = (Node) parser.parseExp();
         while (root != null)  {
-            root.eval(env).print(0);
+            root.eval(interactionEnv).print(0);
             Console.Write("> ");
             root = (Node) parser.parseExp();
         }

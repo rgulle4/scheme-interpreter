@@ -105,7 +105,7 @@ namespace Tree {
             } else if (name.Equals("apply") && numArgs == 2) {
                 return todo(name);
             } else if (name.Equals("interaction-environment") && numArgs == 0) {
-                return todo(name);
+                return Scheme4101.interactionEnv;
             } else if (name.Equals("load") && numArgs == 1) {
                 return todo(name);
             } else { 
@@ -158,9 +158,9 @@ namespace Tree {
             // +---+-------------------------+-----------------+
             // |   | procedure?              | 1: node         |
             // +---+-------------------------+-----------------+
-            // |   | read                    | 0               |
+            // | x | read                    | 0               |
             // +---+-------------------------+-----------------+
-            // |   | write                   | 1: StringLit?   |
+            // | x | write                   | 1: StringLit?   |
             // +---+-------------------------+-----------------+
             // |   | display                 | 1: StringLit?   |
             // +---+-------------------------+-----------------+
@@ -170,7 +170,7 @@ namespace Tree {
             // +---+-------------------------+-----------------+
             // |   | apply                   | 2: Closure List |
             // +---+-------------------------+-----------------+
-            // |   | interaction-environment | 0               |
+            // | x | interaction-environment | 0               |
             // +---+-------------------------+-----------------+
             // |   | load                    | 1: filename     |
             // +---+-------------------------+-----------------+

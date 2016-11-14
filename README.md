@@ -22,7 +22,7 @@ Or, usage as a REPL
 This interpreter should implement
 
 - symbols, 32 bit integers, booleans, strings, lists, and closures;
-- the test `symbol?` for identifying an identifier; the test number?
+- the test `symbol?` for identifying an identifier;
 - the test `number?` for identifying integers
 - the binary arithmetic operations `b+`, `b-`, `b*`, `b/`, `b=`, `b<`;
 - the list operations `car`, `cdr`, `cons`, `set-car!`, `set-cdr!`, `null?`, `pair?`, `eq?`;

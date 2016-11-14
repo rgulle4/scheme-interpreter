@@ -102,7 +102,7 @@ namespace Tree
         }
 
         // define() is for Define.eval()
-        // Adds a new definition to the (front of) the current frame, 
+        // Adds a new definition to (the front of) the current frame, 
         // without following the chain of Environment objects.
         public void define(Node id, Node val)
         {

@@ -6,10 +6,8 @@ namespace Tree {
     public class Quote : Special {
         public Quote() { }
         
-        // TODO: implement eval
         public override Node eval(Node exp, Environment env) {
-            Console.Error.WriteLine("TODO: eval not implemented");
-            return Nil.getInstance();
+            return exp.getCdr().getCar();
         }
         
         public override void print(Node t, int n, bool p) {

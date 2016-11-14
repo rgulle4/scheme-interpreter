@@ -92,12 +92,14 @@ namespace Tree {
             } else if (name.Equals("read") && numArgs == 0) {
                 return todo(name);
             } else if (name.Equals("write") && numArgs == 1) {
-                return todo(name);
+                Node arg = argsList[0] as Node;
+                arg.print(0);
+                return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("display") && numArgs == 1) {
                 return todo(name);
             } else if (name.Equals("newline") && numArgs == 0) {
                 Console.WriteLine();
-                return new StringLit("#{Unspecific}");
+                return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("eval") && numArgs == 2) {
                 return todo(name);
             } else if (name.Equals("apply") && numArgs == 2) {
@@ -107,7 +109,7 @@ namespace Tree {
             } else if (name.Equals("load") && numArgs == 1) {
                 return todo(name);
             } else { 
-                return Node.nilNodeWithErrorMsg("ERROR: couldnt apply BuiltIn");
+                return Node.nilNodeWithErrorMsg("Error: wrong number of arguments");
             }
 
             // 1. get args
@@ -172,11 +174,6 @@ namespace Tree {
             // +---+-------------------------+-----------------+
             // |   | load                    | 1: filename     |
             // +---+-------------------------+-----------------+
-
-
-
-            return new StringLit("Error: BuiltIn.apply not yet implemented");
-
         }
     }    
 }

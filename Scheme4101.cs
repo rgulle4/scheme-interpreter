@@ -7,6 +7,9 @@ using Tree;
 using Environment = Tree.Environment;
 
 public class Scheme4101 {
+
+    public static Parser parser;
+
     public static int Main(string[] args) {
         // Create scanner that reads from standard input
         Scanner scanner = new Scanner(Console.In);
@@ -39,7 +42,7 @@ public class Scheme4101 {
 
         // Create parser
         TreeBuilder builder = new TreeBuilder();
-        Parser parser = new Parser(scanner, builder);
+        parser = new Parser(scanner, builder);
 
         // Create and populate the built-in environment and
         // create the top-level environment

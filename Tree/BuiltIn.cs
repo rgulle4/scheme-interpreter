@@ -90,7 +90,7 @@ namespace Tree {
             } else if (name.Equals("procedure?") && numArgs == 1) {
                 return todo(name);
             } else if (name.Equals("read") && numArgs == 0) {
-                return todo(name);
+                return (Node) Scheme4101.parser.parseExp();
             } else if (name.Equals("write") && numArgs == 1) {
                 Node arg = argsList[0] as Node;
                 arg.print(0);

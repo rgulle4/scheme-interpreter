@@ -52,6 +52,32 @@ namespace Tree {
             //
             // e.g. (b+ x y) returns IntLit(x + y)... (b+ x) should error
             // etc.
+
+            // symbol?
+            // number?
+            // b+
+            // b-
+            // b*
+            // b/
+            // b=
+            // b<
+            // car
+            // cdr
+            // cons
+            // set-car!
+            // set-cdr!
+            // null?
+            // pair?
+            // eq?
+            // procedure?
+            // read
+            // write
+            // display
+            // newline
+            // eval
+            // apply
+            // interaction-environment
+            // load
             return new StringLit("Error: BuiltIn.apply not yet implemented");
 
         }

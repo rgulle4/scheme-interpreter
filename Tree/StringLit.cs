@@ -6,20 +6,24 @@ namespace Tree {
     public class StringLit : Node {
         private string stringVal;
 
-        public bool isQuoted = true;
+        public static bool QUOTES_SHOULD_BE_PRINTED = true;
 
         public StringLit(string s) { stringVal = s; }
-        public StringLit(string s, bool isQuoted) {
+        public StringLit(string s, bool quotesShouldBePrinted) {
             this.stringVal = s;
-            this.isQuoted = isQuoted;
+            StringLit.QUOTES_SHOULD_BE_PRINTED = quotesShouldBePrinted;
         }
 
         public override void print(int n) {
-            if (isQuoted) {
+            if (QUOTES_SHOULD_BE_PRINTED) {
                 Printer.printStringLit(n, stringVal);
             } else {
-                Console.Write(stringVal.PadLeft(n));
-                Console.WriteLine();
+                if (n >= 0) {
+                    Console.Write(stringVal.PadLeft(Math.Abs(n)));                 
+                    Console.WriteLine();
+                } else {
+                    Console.Write(stringVal);
+                }
             }
         }
 

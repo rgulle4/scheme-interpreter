@@ -96,7 +96,11 @@ namespace Tree {
                 arg.print(0);
                 return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("display") && numArgs == 1) {
-                return todo(name);
+                Node arg = argsList[0] as Node;
+                StringLit.QUOTES_SHOULD_BE_PRINTED = false;
+                arg.print(0);
+                StringLit.QUOTES_SHOULD_BE_PRINTED = true;
+                return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("newline") && numArgs == 0) {
                 Console.WriteLine();
                 return new StringLit("#{Unspecific}", false);
@@ -162,7 +166,7 @@ namespace Tree {
             // +---+-------------------------+-----------------+
             // | x | write                   | 1: StringLit?   |
             // +---+-------------------------+-----------------+
-            // |   | display                 | 1: StringLit?   |
+            // | x | display                 | 1: StringLit?   |
             // +---+-------------------------+-----------------+
             // | x | newline                 | 0               |
             // +---+-------------------------+-----------------+

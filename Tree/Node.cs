@@ -42,7 +42,16 @@ namespace Tree {
 
         // TODO: implement eval where appropriate
         public virtual Node eval(Environment env) {
-            Console.Error.WriteLine("Error: cant eval this node");
+            return nilNodeWithErrorMsg("Error: cant eval this node");
+        }
+
+        // TODO: implement apply() in BuiltIn and Closure
+        public virtual Node apply(Node args) {
+            return nilNodeWithErrorMsg("ERROR: cant do node.apply()");
+        }
+
+        private static Node nilNodeWithErrorMsg(Object msg) {
+            Console.Error.WriteLine(msg);
             return Nil.getInstance();
         }
 

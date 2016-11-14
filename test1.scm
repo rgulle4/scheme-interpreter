@@ -7,6 +7,9 @@
 
 (z y) ; should return 84
 
+;(eval '(z y) env) ; should return 84, but doesn't work in reference
+;(eval '(z y) interaction-environment) ; should return 84, but doesn't work in reference
+
 ;; -- symbol? -------------------------- ;;
 (symbol? 'foo) ; => #t
 ;(symbol? foo)  ; => undefined variable, #f
@@ -58,7 +61,19 @@
 ;; -- eval, apply, interaction-environment -- ;;
 
 ; TODO: add tests for eval
-; TODO: add tests for apply (what is this??)
+
+; tests for apply
+(define (threetimes y) 
+  (b* 3 y))
+(apply threetimes '(2))    ; => 6
+
+(define (addthreetimes y) 
+  (b+ y (b+ y y)))
+(apply addthreetimes '(2)) ; => 6
+(addthreetimes 2)          ; => 6
+
+; TODO: add more tests for apply
+
 ; TODO: add tests for interaction-environment
 
 ;NB: The function `eval` needs to perform the following tasks:

@@ -50,6 +50,7 @@
     <Content Include="Scheme\PseudoCode.md" />
     <Content Include="Scheme\SampleExecution.md" />
     <Content Include="SPP.dll" />
+    <Content Include="SPP.netmodule" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />

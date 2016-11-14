@@ -46,9 +46,10 @@ public class Scheme4101
         Parser parser = new Parser(scanner, builder);
 
         // TODO: Create and populate the built-in environment
-        Tree.Environment env = new Tree.Environment();
+        Tree.Environment builtInEnv = new Tree.Environment();
 
-        // TODO: create the top-level environment
+        // create the top-level environment
+        Tree.Environment env = new Tree.Environment(builtInEnv);
 
         // Read-eval-print loop
 

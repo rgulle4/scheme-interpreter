@@ -56,49 +56,47 @@ namespace Tree {
             if (false) {
                 // noop, for now
             } else if (name.Equals("symbol?") && numArgs == 1) {
-                Node arg1 = argsList[0] as Node;
-                return BoolLit.getInstance(arg1.isSymbol());
+                return BoolLit.getInstance(argsList[0].isSymbol());
             } else if (name.Equals("number?") && numArgs == 1) {
-                Node arg1 = argsList[0] as Node;
-                return BoolLit.getInstance(arg1.isNumber());
+                return BoolLit.getInstance(argsList[0].isNumber());
             } else if (name.Equals("b+") && numArgs == 2) {
-                Node arg1 = argsList[0] as Node;
-                Node arg2 = argsList[1] as Node;
+                Node arg1 = argsList[0];
+                Node arg2 = argsList[1];
                 if (arg1.isNumber() && arg2.isNumber()) {
                     int result = arg1.getIntVal() + arg2.getIntVal();
                     return new IntLit(result);
                 }
             } else if (name.Equals("b-") && numArgs == 2) {
-                Node arg1 = argsList[0] as Node;
-                Node arg2 = argsList[1] as Node;
+                Node arg1 = argsList[0];
+                Node arg2 = argsList[1];
                 if (arg1.isNumber() && arg2.isNumber()) {
                     int result = arg1.getIntVal() - arg2.getIntVal();
                     return new IntLit(result);
                 }
             } else if (name.Equals("b*") && numArgs == 2) {
-                Node arg1 = argsList[0] as Node;
-                Node arg2 = argsList[1] as Node;
+                Node arg1 = argsList[0];
+                Node arg2 = argsList[1];
                 if (arg1.isNumber() && arg2.isNumber()) {
                     int result = arg1.getIntVal() * arg2.getIntVal();
                     return new IntLit(result);
                 }
             } else if (name.Equals("b/") && numArgs == 2) {
-                Node arg1 = argsList[0] as Node;
-                Node arg2 = argsList[1] as Node;
+                Node arg1 = argsList[0];
+                Node arg2 = argsList[1];
                 if (arg1.isNumber() && arg2.isNumber()) {
                     int result = arg1.getIntVal() / arg2.getIntVal();
                     return new IntLit(result);
                 }
             } else if (name.Equals("b=") && numArgs == 2) {
-                Node arg1 = argsList[0] as Node;
-                Node arg2 = argsList[1] as Node;
+                Node arg1 = argsList[0];
+                Node arg2 = argsList[1];
                 if (arg1.isNumber() && arg2.isNumber()) {
                     bool result = arg1.getIntVal() == arg2.getIntVal();
                     return BoolLit.getInstance(result);
                 }
             } else if (name.Equals("b<") && numArgs == 2) {
-                Node arg1 = argsList[0] as Node;
-                Node arg2 = argsList[1] as Node;
+                Node arg1 = argsList[0];
+                Node arg2 = argsList[1];
                 if (arg1.isNumber() && arg2.isNumber()) {
                     bool result = arg1.getIntVal() < arg2.getIntVal();
                     return BoolLit.getInstance(result);
@@ -114,31 +112,26 @@ namespace Tree {
             } else if (name.Equals("set-cdr!") && numArgs == 1) {
                 return todo(name);
             } else if (name.Equals("null?") && numArgs == 1) {
-                Node arg1 = argsList[0] as Node;
-                return BoolLit.getInstance(arg1.isNull());
+                return BoolLit.getInstance(argsList[0].isNull());
             } else if (name.Equals("pair?") && numArgs == 1) {
-                Node arg1 = argsList[0] as Node;
-                return BoolLit.getInstance(arg1.isPair());
+                return BoolLit.getInstance(argsList[0].isPair());
             } else if (name.Equals("eq?") && numArgs == 2) {
-                Node arg1 = argsList[0] as Node;
-                Node arg2 = argsList[1] as Node;
+                Node arg1 = argsList[0];
+                Node arg2 = argsList[1];
                 bool result = (arg1 == arg2);
                 if (arg1.isSymbol() && arg2.isSymbol())
                     result = arg1.getName().Equals(arg2.getName());
                 return BoolLit.getInstance(result);
             } else if (name.Equals("procedure?") && numArgs == 1) {
-                Node arg1 = argsList[0] as Node;
-                return BoolLit.getInstance(arg1.isProcedure());
+                return BoolLit.getInstance(argsList[0].isProcedure());
             } else if (name.Equals("read") && numArgs == 0) {
                 return (Node) Scheme4101.parser.parseExp();
             } else if (name.Equals("write") && numArgs == 1) {
-                Node arg = argsList[0] as Node;
-                arg.print(0);
+                argsList[0].print(0);
                 return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("display") && numArgs == 1) {
-                Node arg = argsList[0] as Node;
                 StringLit.QUOTES_SHOULD_BE_PRINTED = false;
-                arg.print(0);
+                argsList[0].print(0);
                 StringLit.QUOTES_SHOULD_BE_PRINTED = true;
                 return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("newline") && numArgs == 0) {

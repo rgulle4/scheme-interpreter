@@ -76,6 +76,40 @@
 
 ; TODO: add tests for interaction-environment
 
+(interaction-environment)
+
+; => something like this (when executed at startup)
+; #{Environment
+; ()
+;     #{Environment
+;         ((load #{Built-in Procedure load}) 
+;          (interaction-environment #{Built-in Procedure interaction-environment}) 
+;          (apply #{Built-in Procedure apply}) 
+;          (eval #{Built-in Procedure eval}) 
+;          (newline #{Built-in Procedure newline}) 
+;          (display #{Built-in Procedure display}) 
+;          (write #{Built-in Procedure write}) 
+;          (read #{Built-in Procedure read}) 
+;          (procedure? #{Built-in Procedure procedure?}) 
+;          (eq? #{Built-in Procedure eq?}) 
+;          (pair? #{Built-in Procedure pair?}) 
+;          (null? #{Built-in Procedure null?}) 
+;          (set-cdr! #{Built-in Procedure set-cdr!}) 
+;          (set-car! #{Built-in Procedure set-car!}) 
+;          (cons #{Built-in Procedure cons}) 
+;          (cdr #{Built-in Procedure cdr}) 
+;          (car #{Built-in Procedure car}) 
+;          (b< #{Built-in Procedure b<}) 
+;          (b= #{Built-in Procedure b=}) 
+;          (b/ #{Built-in Procedure b/}) 
+;          (b* #{Built-in Procedure b*}) 
+;          (b- #{Built-in Procedure b-}) 
+;          (b+ #{Built-in Procedure b+}) 
+;          (number? #{Built-in Procedure number?}) 
+;          (symbol? #{Built-in Procedure symbol?}))
+;     }
+; }
+
 ;NB: The function `eval` needs to perform the following tasks:
 
 ;- extend the environment for variable or function definitions,

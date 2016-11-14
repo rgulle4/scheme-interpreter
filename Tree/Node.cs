@@ -48,7 +48,7 @@ namespace Tree {
 
         // TODO: implement apply() in BuiltIn and Closure
         public virtual Node apply(Node args) {
-            return nilNodeWithErrorMsg("ERROR: cant do node.apply()");
+            return nilNodeWithErrorMsg("Error: attempt to call a non-procedure");
         }
 
         public static List<Node> getArgsList(Node args) {

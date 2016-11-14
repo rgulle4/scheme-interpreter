@@ -58,12 +58,23 @@
 ;; -- eval, apply, interaction-environment -- ;;
 
 ; TODO: add tests for eval
-; TODO: add tests for apply
+; TODO: add tests for apply (what is this??)
 ; TODO: add tests for interaction-environment
+
+;NB: The function `eval` needs to perform the following tasks:
+
+;- extend the environment for variable or function definitions,
+;- extend the environment for `let` expressions,
+;- update the environment for `set!` assignments,
+;- look up variables in the environment,
+;- handle the special forms `quote`, `lambda`, `begin`, `if`,
+  ;and `cond` (including the `else` keyword in `cond`), and
+;- recursively call `apply` for function calls.
+
+
+;; -- eval, apply, interaction-environment -- ;;
 
 ;; example run
 ;;     cat test1.scm | ./Scheme4101-reference.exe
 ;; output is
-;;     > 8
-;;     > > > > 84
-;;     >
+;;     TODO paste this in

@@ -6,9 +6,15 @@ namespace Tree {
     public class Regular : Special {
         public Regular() { }
         
-        // TODO: implement eval
         public override Node eval(Node exp, Environment env) {
-            Console.Error.WriteLine("TODO: eval not implemented");
+            if (exp.isNull() || env.isNull()) { 
+                Console.Error.WriteLine("ERROR: cant eval regular");
+                return Nil.getInstance();
+            }
+            Node car = exp.getCar();
+            Node cdr = exp.getCdr();
+            // TODO: finish Regular.eval().
+            Console.Error.WriteLine("ERROR: cant eval regular");
             return Nil.getInstance();
         }
         

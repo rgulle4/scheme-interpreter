@@ -111,7 +111,14 @@ namespace Tree {
         // except that after calling find(), the value should 
         // be updated instead of returned.
         public void assign(Node id, Node val) {
-            // TODO: implement this function
+            Node oldVal = find(id, frame);
+            if (oldVal.isNull() && env == null) {
+                Console.Error.WriteLine("undefined variable " + id.getName());
+            } else if (oldVal.isNull()) {
+                env.assign(id, val);
+            } else {
+                oldVal.setCar(val);
+            }
         }
     }
 }

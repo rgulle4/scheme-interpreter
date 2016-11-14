@@ -2,8 +2,7 @@
 
 by: Roy Gullem, Vincent Rodomista
 
-An interpreter for a subset of Scheme in C#. Reads a Scheme
-program from stdin and prints it properly indented to stdout.
+An interpreter for a subset of Scheme in C#.
 
 Usage with a Scheme file:
 

@@ -60,17 +60,47 @@ namespace Tree {
             } else if (name.Equals("number?") && numArgs == 1) {
                 return todo(name);
             } else if (name.Equals("b+") && numArgs == 2) {
-                return todo(name);
+                Node arg1 = argsList[0] as Node;
+                Node arg2 = argsList[1] as Node;
+                if (arg1.isNumber() && arg2.isNumber()) {
+                    int result = arg1.getIntVal() + arg2.getIntVal();
+                    return new IntLit(result);
+                }
             } else if (name.Equals("b-") && numArgs == 2) {
-                return todo(name);
+                Node arg1 = argsList[0] as Node;
+                Node arg2 = argsList[1] as Node;
+                if (arg1.isNumber() && arg2.isNumber()) {
+                    int result = arg1.getIntVal() - arg2.getIntVal();
+                    return new IntLit(result);
+                }
             } else if (name.Equals("b*") && numArgs == 2) {
-                return todo(name);
+                Node arg1 = argsList[0] as Node;
+                Node arg2 = argsList[1] as Node;
+                if (arg1.isNumber() && arg2.isNumber()) {
+                    int result = arg1.getIntVal() * arg2.getIntVal();
+                    return new IntLit(result);
+                }
             } else if (name.Equals("b/") && numArgs == 2) {
-                return todo(name);
+                Node arg1 = argsList[0] as Node;
+                Node arg2 = argsList[1] as Node;
+                if (arg1.isNumber() && arg2.isNumber()) {
+                    int result = arg1.getIntVal() / arg2.getIntVal();
+                    return new IntLit(result);
+                }
             } else if (name.Equals("b=") && numArgs == 2) {
-                return todo(name);
+                Node arg1 = argsList[0] as Node;
+                Node arg2 = argsList[1] as Node;
+                if (arg1.isNumber() && arg2.isNumber()) {
+                    bool result = arg1.getIntVal() == arg2.getIntVal();
+                    return BoolLit.getInstance(result);
+                }
             } else if (name.Equals("b<") && numArgs == 2) {
-                return todo(name);
+                Node arg1 = argsList[0] as Node;
+                Node arg2 = argsList[1] as Node;
+                if (arg1.isNumber() && arg2.isNumber()) {
+                    bool result = arg1.getIntVal() < arg2.getIntVal();
+                    return BoolLit.getInstance(result);
+                }
             } else if (name.Equals("car") && numArgs == 1) {
                 return todo(name);
             } else if (name.Equals("cdr") && numArgs == 1) {
@@ -112,9 +142,8 @@ namespace Tree {
                 return Scheme4101.interactionEnv;
             } else if (name.Equals("load") && numArgs == 1) {
                 return todo(name);
-            } else { 
-                return Node.nilNodeWithErrorMsg("Error: wrong number of arguments");
             }
+            return Node.nilNodeWithErrorMsg("Error: wrong number of arguments");
 
             // 1. get args
             // 2. return the actual result, depending on the name,
@@ -132,17 +161,17 @@ namespace Tree {
             // +---+-------------------------+-----------------+
             // |   | number?                 | 1: int          |
             // +---+-------------------------+-----------------+
-            // |   | b+                      | 2: int, int     |
+            // | x | b+                      | 2: int, int     |
             // +---+-------------------------+-----------------+
-            // |   | b-                      | 2: int, int     |
+            // | x | b-                      | 2: int, int     |
             // +---+-------------------------+-----------------+
-            // |   | b*                      | 2: int int      |
+            // | x | b*                      | 2: int int      |
             // +---+-------------------------+-----------------+
-            // |   | b/                      | 2: int int      |
+            // | x | b/                      | 2: int int      |
             // +---+-------------------------+-----------------+
-            // |   | b=                      | 2: int int      |
+            // | x | b=                      | 2: int int      |
             // +---+-------------------------+-----------------+
-            // |   | b<                      | 2: int int      |
+            // | x | b<                      | 2: int int      |
             // +---+-------------------------+-----------------+
             // |   | car                     | 1: list         |
             // +---+-------------------------+-----------------+

@@ -93,5 +93,10 @@ namespace Tree {
         }
   
         public virtual string getName() { return ""; }
+
+        public virtual int getIntVal() {
+            Console.Error.WriteLine("Error: this node isn't an IntLit");
+            return 0;
+        }
     }
 }

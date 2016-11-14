@@ -15,5 +15,9 @@ namespace Tree {
         public override bool isNumber() { return true; }
 
         public override Node eval(Environment e) { return this; }
+
+        public override int getIntVal() {
+            return this.intVal;
+        }
     }
 }

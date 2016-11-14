@@ -2,14 +2,17 @@
 
 using System;
 
-namespace Tree
-{
-    public class Begin : Special
-    {
+namespace Tree {
+    public class Begin : Special {
         public Begin() { }
 
-        public override void print(Node t, int n, bool p)
-        {
+        // TODO: implement eval
+        public override Node eval(Node exp, Environment env) {
+            Console.Error.WriteLine("TODO: eval not implemented");
+            return Nil.getInstance();
+        }
+
+        public override void print(Node t, int n, bool p) {
             Printer.printBegin(t, n, p);
         }
     }

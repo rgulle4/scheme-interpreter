@@ -2,19 +2,21 @@
 
 using System;
 
-namespace Tree
-{
+namespace Tree {
     public class Cons : Node
     {
         private Node car;
         private Node cdr;
         private Special form;
     
-        public Cons(Node a, Node d)
-        {
+        public Cons(Node a, Node d) {
             car = a;
             cdr = d;
             parseList();
+        }
+
+        public override Node eval(Environment env) {
+            return form.eval(this, env);
         }
     
         // parseList() `parses' special forms, constructs an appropriate
@@ -25,12 +27,10 @@ namespace Tree
         // parseList only look at the car for selecting the appropriate
         // object from the Special hierarchy and to leave the rest of
         // parsing up to the interpreter.
-        private void parseList()
-        {
+        private void parseList() {
             if (! car.isSymbol())
                 form = new Regular();
-            else
-            {
+            else {
                 string name = car.getName();
 
                 if (name.Equals("quote"))
@@ -54,40 +54,21 @@ namespace Tree
             }
         }
  
-        public override void print(int n)
-        {
+        public override void print(int n) {
             form.print(this, n, false);
         }
 
-        public override void print(int n, bool p)
-        {
+        public override void print(int n, bool p) {
             form.print(this, n, p);
         }
 
-        public override Node getCar()
-        {
-            return car;
-        }
-
-        public override Node getCdr()
-        {
-            return cdr;
-        }
-
-        public override void setCar(Node a)
-        {
+        public override Node getCar() { return car; }
+        public override Node getCdr() { return cdr; }
+        public override void setCar(Node a) {
             car = a;
             parseList();
         }
-
-        public override void setCdr(Node d)
-        {
-            cdr = d;
-        }
-
-        public override bool isPair()
-        {
-            return true;
-        }
+        public override void setCdr(Node d) { cdr = d; }
+        public override bool isPair() { return true; }
     }
 }

@@ -2,25 +2,18 @@
 
 using System;
 
-namespace Tree
-{
-    public class IntLit : Node
-    {
+namespace Tree {
+    public class IntLit : Node {
         private int intVal;
 
-        public IntLit(int i)
-        {
-            intVal = i;
-        }
+        public IntLit(int i) { intVal = i; }
 
-        public override void print(int n)
-        {
+        public override void print(int n) {
             Printer.printIntLit(n, intVal);
         }
 
-        public override bool isNumber()
-        {
-            return true;
-        }
+        public override bool isNumber() { return true; }
+
+        public override Node eval(Environment e) { return this; }
     }
 }

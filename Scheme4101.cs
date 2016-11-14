@@ -4,6 +4,7 @@ using System;
 using Parse;
 using Tokens;
 using Tree;
+using Environment = Tree.Environment;
 
 public class Scheme4101
 {
@@ -46,10 +47,10 @@ public class Scheme4101
         Parser parser = new Parser(scanner, builder);
 
         // TODO: Create and populate the built-in environment
-        Tree.Environment builtInEnv = new Tree.Environment();
+        Environment builtInEnv = new Environment();
 
         // create the top-level environment
-        Tree.Environment env = new Tree.Environment(builtInEnv);
+        Environment env = new Environment(builtInEnv);
 
         // Read-eval-print loop
 

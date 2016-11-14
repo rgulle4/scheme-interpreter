@@ -14,7 +14,7 @@
 // the function symbol.
 
 using System;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Tree {
     public class BuiltIn : Node {
@@ -50,7 +50,7 @@ namespace Tree {
         public override Node apply(Node args) {
             String name = symbol.getName().ToLower();
 
-            ArrayList argsList = Node.getArgsList(args);
+            List<Node> argsList = Node.getArgsList(args);
             int numArgs = argsList.Count;
 
             if (false) {

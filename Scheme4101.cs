@@ -56,6 +56,7 @@ public class Scheme4101 {
         Console.Write("> ");
         Node root = (Node) parser.parseExp();
         while (root != null)  {
+            StringLit.QUOTES_SHOULD_BE_PRINTED = true;
             root.eval(interactionEnv).print(0);
             Console.Write("> ");
             root = (Node) parser.parseExp();

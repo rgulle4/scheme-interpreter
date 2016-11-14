@@ -11,10 +11,8 @@
 
 using System;
 
-namespace Tree
-{
-    public class Closure : Node
-    {
+namespace Tree {
+    public class Closure : Node {
         private Node fun;          // a lambda expression
         private Environment env;   // the environment in which
                                    // the function was defined
@@ -24,7 +22,7 @@ namespace Tree
         public Node getFun() { return fun; }
         public Environment getEnv() { return env; }
 
-        // TODO: The method isProcedure() should be defined in
+        // The method isProcedure() should be defined in
         // class Node to return false.
         public override bool isProcedure() { return true; }
 
@@ -43,8 +41,7 @@ namespace Tree
         // TODO: The method apply() should be defined in class Node
         // to report an error.  It should be overridden only in classes
         // BuiltIn and Closure.
-        public /* override */ Node apply (Node args)
-        {
+        public /* override */ Node apply (Node args) {
             return new StringLit("Error: Closure.apply not yet implemented");
         }
     }    

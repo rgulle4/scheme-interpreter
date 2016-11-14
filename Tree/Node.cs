@@ -2,10 +2,8 @@
 
 using System;
 
-namespace Tree
-{
-    public class Node : INode
-    {
+namespace Tree {
+    public class Node : INode {
         // The argument of print(int) is the number of characters to indent.
         // Every subclass of Node must implement print(int).
         public virtual void print(int n) { }
@@ -25,8 +23,7 @@ namespace Tree
         // encode that in the sign bit of n. If you need additional parameters,
         // make sure that you define the method print in all the appropriate
         // subclasses of Node as well.
-        public virtual void print(int n, bool p)
-        {
+        public virtual void print(int n, bool p) {
             print(n);
         }
 
@@ -43,6 +40,12 @@ namespace Tree
         public virtual bool isPair()   { return false; }  // Cons
         public virtual bool isProcedure() { return false; } // BuiltIn, Closure
 
+        // TODO: implement eval where appropriate
+        public virtual Node eval(Environment env) {
+            Console.Error.WriteLine("Error: cant eval this node");
+            return Nil.getInstance();
+        }
+
         // Since C# does not have covariant override, it is not possible
         // for the getCar and getCdr methods to implement the interface
         // methods from INode directly.
@@ -52,31 +55,24 @@ namespace Tree
         // Report an error in these default methods and implement them
         // in class Cons.  After setCar, a Cons cell needs to be `parsed' again
         // using parseList.
-        public virtual Node getCar()
-        {
+        public virtual Node getCar() {
             Console.Error.WriteLine("Error: argument of car is not a pair");
             return null;
         }
 
-        public virtual Node getCdr()
-        {
+        public virtual Node getCdr() {
             Console.Error.WriteLine("Error: argument of cdr is not a pair");
             return null;
         }
 
-        public virtual void setCar(Node a)
-        {
+        public virtual void setCar(Node a) {
             Console.Error.WriteLine("Error: argument of set-car! is not a pair");
         }
 
-        public virtual void setCdr(Node d)
-        {
+        public virtual void setCdr(Node d) {
             Console.Error.WriteLine("Error: argument of set-cdr! is not a pair");
         }
   
-        public virtual string getName()
-        {
-            return "";
-        }
+        public virtual string getName() { return ""; }
     }
 }

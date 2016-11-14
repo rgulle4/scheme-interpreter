@@ -31,10 +31,8 @@
 
 using System;
 
-namespace Tree
-{
-    public class Environment : Node
-    {
+namespace Tree {
+    public class Environment : Node {
         // An Environment is implemented like a Cons node, in which
         // every list element (every frame) is an association list.
         // Instead of Nil(), we use null to terminate the list.
@@ -42,20 +40,17 @@ namespace Tree
         private Node frame;       // the innermost scope, an assoc list
         private Environment env;  // the enclosing environment
    
-        public Environment()
-        {
+        public Environment() {
             frame = Nil.getInstance();
             env = null;
         }
    
-        public Environment(Environment e)
-        {
+        public Environment(Environment e) {
             frame = Nil.getInstance();
             env = e;
         }
 
-        public override void print(int n) 
-        {
+        public override void print(int n) {
             // there got to be a more efficient way to print n spaces
             for (int i = 0; i < n; i++)
                 Console.Write(' ');
@@ -71,8 +66,7 @@ namespace Tree
 
         // This is not in an object-oriented style, it's more or less a
         // translation of the Scheme assq function.
-        private static Node find(Node id, Node alist)
-        {
+        private static Node find(Node id, Node alist) {
             if (! alist.isPair()) {
                 return null;  // in Scheme we'd return #f
             } else {
@@ -86,8 +80,7 @@ namespace Tree
         }
 
 
-        public Node lookup(Node id)
-        {
+        public Node lookup(Node id) {
             Node val = find(id, frame);
             if (val == null && env == null) {
                 Console.Error.WriteLine("undefined variable " + id.getName());
@@ -104,8 +97,7 @@ namespace Tree
         // define() is for Define.eval()
         // Adds a new definition to (the front of) the current frame, 
         // without following the chain of Environment objects.
-        public void define(Node id, Node val)
-        {
+        public void define(Node id, Node val) {
             frame = new Cons(
                 new Cons(
                     id, 
@@ -118,8 +110,7 @@ namespace Tree
         // The recursive structure is the same as for lookup(), 
         // except that after calling find(), the value should 
         // be updated instead of returned.
-        public void assign(Node id, Node val)
-        {
+        public void assign(Node id, Node val) {
             // TODO: implement this function
         }
     }

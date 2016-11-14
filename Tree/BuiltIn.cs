@@ -56,9 +56,11 @@ namespace Tree {
             if (false) {
                 // noop, for now
             } else if (name.Equals("symbol?") && numArgs == 1) {
-                return todo(name);
+                Node arg1 = argsList[0] as Node;
+                return BoolLit.getInstance(arg1.isSymbol());
             } else if (name.Equals("number?") && numArgs == 1) {
-                return todo(name);
+                Node arg1 = argsList[0] as Node;
+                return BoolLit.getInstance(arg1.isNumber());
             } else if (name.Equals("b+") && numArgs == 2) {
                 Node arg1 = argsList[0] as Node;
                 Node arg2 = argsList[1] as Node;
@@ -112,13 +114,21 @@ namespace Tree {
             } else if (name.Equals("set-cdr!") && numArgs == 1) {
                 return todo(name);
             } else if (name.Equals("null?") && numArgs == 1) {
-                return todo(name);
+                Node arg1 = argsList[0] as Node;
+                return BoolLit.getInstance(arg1.isNull());
             } else if (name.Equals("pair?") && numArgs == 1) {
-                return todo(name);
+                Node arg1 = argsList[0] as Node;
+                return BoolLit.getInstance(arg1.isPair());
             } else if (name.Equals("eq?") && numArgs == 2) {
-                return todo(name);
+                Node arg1 = argsList[0] as Node;
+                Node arg2 = argsList[1] as Node;
+                bool result = (arg1 == arg2);
+                if (arg1.isSymbol() && arg2.isSymbol())
+                    result = arg1.getName().Equals(arg2.getName());
+                return BoolLit.getInstance(result);
             } else if (name.Equals("procedure?") && numArgs == 1) {
-                return todo(name);
+                Node arg1 = argsList[0] as Node;
+                return BoolLit.getInstance(arg1.isProcedure());
             } else if (name.Equals("read") && numArgs == 0) {
                 return (Node) Scheme4101.parser.parseExp();
             } else if (name.Equals("write") && numArgs == 1) {
@@ -148,7 +158,7 @@ namespace Tree {
             // 1. get args
             // 2. return the actual result, depending on the name,
             //    using a monster if statement, making sure to get
-            //    it right for all the BuiltIns listed in 
+            //    it right for all the BuiltIns listed in
             //    Scheme4101.getBuiltInEnv()
             //
             // e.g. (b+ x y) returns IntLit(x + y)... (b+ x) should error
@@ -157,9 +167,9 @@ namespace Tree {
             // +---+-------------------------+-----------------+
             // |   | id                      | numArgs         |
             // +===+=========================+=================+
-            // |   | symbol?                 | 1               |
+            // | x | symbol?                 | 1               |
             // +---+-------------------------+-----------------+
-            // |   | number?                 | 1: int          |
+            // | x | number?                 | 1: int          |
             // +---+-------------------------+-----------------+
             // | x | b+                      | 2: int, int     |
             // +---+-------------------------+-----------------+
@@ -183,13 +193,13 @@ namespace Tree {
             // +---+-------------------------+-----------------+
             // |   | set-cdr!                | 1: list         |
             // +---+-------------------------+-----------------+
-            // |   | null?                   | 1: node         |
+            // | x | null?                   | 1: node         |
             // +---+-------------------------+-----------------+
-            // |   | pair?                   | 1: node         |
+            // | x | pair?                   | 1: node         |
             // +---+-------------------------+-----------------+
-            // |   | eq?                     | 2: node         |
+            // | x | eq?                     | 2: node         |
             // +---+-------------------------+-----------------+
-            // |   | procedure?              | 1: node         |
+            // | x | procedure?              | 1: node         |
             // +---+-------------------------+-----------------+
             // | x | read                    | 0               |
             // +---+-------------------------+-----------------+
@@ -208,6 +218,6 @@ namespace Tree {
             // |   | load                    | 1: filename     |
             // +---+-------------------------+-----------------+
         }
-    }    
+    }
 }
 

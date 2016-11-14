@@ -102,15 +102,19 @@ namespace Tree
         }
 
         // define() is for Define.eval()
-        // It only adds a new definition to the current frame, 
+        // Adds a new definition to the (front of) the current frame, 
         // without following the chain of Environment objects.
         public void define(Node id, Node val)
         {
-            // TODO: implement this function
+            frame = new Cons(
+                new Cons(
+                    id, 
+                    new Cons(val, Nil.getInstance())), 
+                frame);
         }
 
         // assign() is for implementing Set.eval()
-        // It modifies the value of an existing variable.
+        // Modifies the value of an existing variable.
         // The recursive structure is the same as for lookup(), 
         // except that after calling find(), the value should 
         // be updated instead of returned.

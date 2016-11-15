@@ -79,9 +79,6 @@ namespace Tree {
             } else if (lambdaArgs.isPair() && args.isPair()) {
                 env.define(lambdaArgs.getCar(), args.getCar());
                 setUpFrame(lambdaArgs.getCdr(), args.getCdr(), env);
-            } else if (false) {
-                // TODO: add error handling... should say 
-
             }
         }
 

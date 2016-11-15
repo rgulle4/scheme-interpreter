@@ -7,7 +7,6 @@ namespace Tree {
     public class Define : Special {
         public Define() { }
         
-        // TODO: implement eval
         public override Node eval(Node exp, Environment env) {
             List<Node> argsList = Node.getArgsList(exp.getCdr());
             int numArgs = argsList.Count;
@@ -24,7 +23,6 @@ namespace Tree {
                 return new StringLit("");
             }
 
-            // TODO: finish define a function
             if (argsList[0].isPair() && numArgs >= 2) {
                 Node fnSignature = argsList[0];
                 Node fnBody = exp.getCdr().getCdr();

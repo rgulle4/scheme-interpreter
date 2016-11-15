@@ -15,31 +15,42 @@ namespace Tree {
         }
 
         private Node evalRecursive(Node exp, Environment env) {
-            Console.WriteLine(" -- Entered evalRecursive() -- ");
-            Node rest = exp.getCdr();
-
-            Node branch = exp.getCar();
-            if (branch.isNull()) {
+            // Console.WriteLine(" -- Entered evalRecursive() -- ");
+            // exp.print(0);
+            if (exp.isNull()) {
                 StringLit.SHOULD_PRINT_QUOTES = true;
                 return new StringLit("#{Unspecific}", false);
             }
 
-            Node branchCond = branch.getCar();
-            Node branchExpr = branch.getCdr();
+        
+            Node branch = exp.getCar();
 
+            Node branchCond = branch.getCar();
+            // Console.Write("branchCond: ");
+            // branchCond.print(0);
+
+            Node branchExpr = branch.getCdr();
+            // Console.Write("branchExpr: ");
+            // branchExpr.print(0);
+            
+            Node rest = exp.getCdr();
+            // Console.Write("rest: ");
+            // rest.print(0);
+
+            // eval else
             if (branchCond.getName().Equals("else")) {
-                Console.Write("eval else... ");
-                branchExpr.print(0); 
-                return Node.nilNodeWithErrorMsg(
-                    "Error: invalid expression");
-                // return branchExpr.eval(env);
+                return branchExpr.getCar().eval(env);
             }
+            // Node branchCondEvald = branchCond.eval(env);
+            // Console.Write("branchCondEval: ");
+            // branchCondEvald.print(0);
+
+            // Node branchExprEvald = branchExpr.getCar().eval(env);
+            // Console.Write("branchExprEvald: ");
+            // branchExprEvald.print(0);
+
             if (branchCond.eval(env) == BoolLit.getInstance(true)) {
-                Console.Write("eval... ");
-                branchExpr.print(0);     
-                return Node.nilNodeWithErrorMsg(
-                    "Error: invalid expression");                          
-                // return branchExpr.eval(env);
+                return branchExpr.getCar().eval(env);
             }
 
             return evalRecursive(rest, env);

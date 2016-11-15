@@ -82,8 +82,8 @@ namespace Tree {
         }
 
         private static int countNodes(Node exp, int count) {
-            Console.Write("--- branch: ");
-            exp.getCar().print(0);
+            // Console.Write("--- branch: ");
+            // exp.getCar().print(0);
             Node cdr  = exp.getCdr();
             if (cdr.isNull())
                 return count;

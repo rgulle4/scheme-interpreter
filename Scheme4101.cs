@@ -52,7 +52,7 @@ public class Scheme4101 {
 
         // Read-eval-print loop
 
-        // Print prompt and TODO: evaluate the expression
+        // Print prompt and evaluate the expression
         Console.Write("> ");
         Node root = (Node) parser.parseExp();
         while (root != null)  {
@@ -60,6 +60,8 @@ public class Scheme4101 {
             StringLit.SHOULD_PRINT_AT_ALL = true;
             root.eval(interactionEnv).print(0);
             Console.Write("> ");
+            StringLit.SHOULD_PRINT_QUOTES = true;
+            StringLit.SHOULD_PRINT_AT_ALL = true;
             root = (Node) parser.parseExp();
         }
 

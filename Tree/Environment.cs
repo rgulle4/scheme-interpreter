@@ -98,11 +98,11 @@ namespace Tree {
         // Adds a new definition to (the front of) the current frame, 
         // without following the chain of Environment objects.
         public void define(Node id, Node val) {
+            Node valCons = new Cons(val, Nil.getInstance());
             frame = new Cons(
-                new Cons(
-                    id, 
-                    new Cons(val, Nil.getInstance())), 
-                frame);
+                new Cons(id, valCons), 
+                frame
+            );
         }
 
         // assign() is for implementing Set.eval()

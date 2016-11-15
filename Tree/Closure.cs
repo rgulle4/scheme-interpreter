@@ -45,7 +45,52 @@ namespace Tree {
         //     to the corresponding argument values.
         //   - recursively call eval for the fn body and the new environment.
         public override Node apply(Node args) {
-            return new StringLit("Error: Closure.apply not yet implemented");
+            
+            // extract the environment out of the closure
+            Environment env = new Environment(this.env);
+
+            // add a new frame to the environment that binds the 
+            // parameters to the corresponding argument values.
+            Node lambdaArgsAndBody = fun.getCdr();
+            Node lambdaArgs = lambdaArgsAndBody.getCar();
+            Node lambdaBody = lambdaArgsAndBody.getCdr();
+            setUpFrame(lambdaArgs, args, env);
+
+            // recursively call eval
+            return callEval(lambdaBody, env);
+
+            // TODO: set up Error handling and printing in both setUpFrame(), and callEval()...
+            // reference binary does this:
+            // > (define (foo x) x)
+            // > (foo)
+            // Error: wrong number of arguments
+            // undefined variable x
+            // ()
+            // > (foo 7 8 9)
+            // Error: wrong number of arguments
+            // 7
+
+        }
+
+        private void setUpFrame(Node lambdaArgs, Node args, Environment env) {
+            if (lambdaArgs.isSymbol()) {
+                env.define(lambdaArgs, args);
+                return;
+            } else if (lambdaArgs.isPair() && args.isPair()) {
+                env.define(lambdaArgs.getCar(), args.getCar());
+                setUpFrame(lambdaArgs.getCdr(), args.getCdr(), env);
+            } else if (false) {
+                // TODO: add error handling... should say 
+
+            }
+        }
+
+        private Node callEval(Node lambdaBody, Environment env) {
+            Node car = lambdaBody.getCar().eval(env);
+            Node cdr = lambdaBody.getCdr();
+            if (cdr.isNull())
+                return car;
+            return callEval(cdr.getCdr(), env);
         }
     }    
 }

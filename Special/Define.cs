@@ -27,7 +27,7 @@ namespace Tree {
             // TODO: finish define a function
             if (argsList[0].isPair() && numArgs == 2) {
                 Node fnSignature = argsList[0];
-                Node fnBody = argsList[1];
+                Node fnBody = exp.getCdr().getCdr();
 
                 Node fnId = fnSignature.getCar();
                 Node fnArgs = fnSignature.getCdr();

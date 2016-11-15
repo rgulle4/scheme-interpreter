@@ -132,9 +132,9 @@ namespace Tree {
                 argsList[0].print(0);
                 return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("display") && numArgs == 1) {
-                StringLit.QUOTES_SHOULD_BE_PRINTED = false;
+                StringLit.SHOULD_PRINT_QUOTES = false;
                 argsList[0].print(0);
-                StringLit.QUOTES_SHOULD_BE_PRINTED = true;
+                StringLit.SHOULD_PRINT_QUOTES = true;
                 return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("newline") && numArgs == 0) {
                 Console.WriteLine();

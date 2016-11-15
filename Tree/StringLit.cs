@@ -6,19 +6,24 @@ namespace Tree {
     public class StringLit : Node {
         private string stringVal;
 
-        public static bool QUOTES_SHOULD_BE_PRINTED = true;
+        public static bool SHOULD_PRINT_QUOTES = true;
         public static bool SHOULD_PRINT_AT_ALL = true;
 
         public StringLit(string s) { stringVal = s; }
-        public StringLit(string s, bool quotesShouldBePrinted) {
+        public StringLit(string s, bool shouldPrintQuotes) {
             this.stringVal = s;
-            StringLit.QUOTES_SHOULD_BE_PRINTED = quotesShouldBePrinted;
+            StringLit.SHOULD_PRINT_QUOTES = shouldPrintQuotes;
+        }
+        public StringLit(string s, bool shouldPrintQuotes, bool shouldPrintAtAll) {
+            this.stringVal = s;
+            StringLit.SHOULD_PRINT_QUOTES = shouldPrintQuotes;
+            StringLit.SHOULD_PRINT_AT_ALL = shouldPrintAtAll;
         }
 
         public override void print(int n) {
             if (!SHOULD_PRINT_AT_ALL)
                 return;
-            if (QUOTES_SHOULD_BE_PRINTED) {
+            if (SHOULD_PRINT_QUOTES) {
                 Printer.printStringLit(n, stringVal);
             } else {
                 if (n >= 0) {

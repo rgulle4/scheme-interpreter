@@ -15,6 +15,11 @@
   ((b< 3 3) 'b)
   (else 'c))
 
+(display "------ should be => nothing -----------")
+(cond 
+  ((b< 3 3) 'a)
+  ((b< 3 3) 'b))
+
 ;; (if (b< 3 5) 
 ;;   'less
 ;;   'true)

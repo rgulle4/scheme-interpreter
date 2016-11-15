@@ -41,12 +41,29 @@ namespace Tree {
         public virtual bool isPair()   { return false; }  // Cons
         public virtual bool isProcedure() { return false; } // BuiltIn, Closure
 
-        // TODO: implement eval where appropriate
+        // eval() should be implemented in
+        // - Special/Begin
+        // - Special/Cond
+        // - Special/Define
+        // - Special/If
+        // - Special/Lambda
+        // - Special/Let
+        // - Special/Quote
+        // - Special/Regular
+        // - Special/Set
+        // - Special/Special (as an abstract method)
+        // - Tree/BoolLit
+        // - Tree/Cons
+        // - Tree/Ident
+        // - Tree/IntLit
+        // - Tree/StringLit
         public virtual Node eval(Environment env) {
             return nilNodeWithErrorMsg("Error: cant eval this node");
         }
 
-        // TODO: implement apply() in BuiltIn and Closure
+        // apply() should be implemented in
+        // - BuiltIn
+        // - Closure
         public virtual Node apply(Node args) {
             return nilNodeWithErrorMsg("Error: attempt to call a non-procedure");
         }

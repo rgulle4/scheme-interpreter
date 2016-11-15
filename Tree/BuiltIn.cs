@@ -102,15 +102,18 @@ namespace Tree {
                     return BoolLit.getInstance(result);
                 }
             } else if (name.Equals("car") && numArgs == 1) {
-                return todo(name);
+                return argsList[0].getCar();
             } else if (name.Equals("cdr") && numArgs == 1) {
-                return todo(name);
+                return argsList[0].getCdr();
             } else if (name.Equals("cons") && numArgs == 1) {
-                return todo(name);
+                return new Cons(
+                    argsList[0], argsList[1]);
             } else if (name.Equals("set-car!") && numArgs == 1) {
-                return todo(name);
+                argsList[0].setCar(argsList[1]);
+                return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("set-cdr!") && numArgs == 1) {
-                return todo(name);
+                argsList[0].setCdr(argsList[1]);
+                return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("null?") && numArgs == 1) {
                 return BoolLit.getInstance(argsList[0].isNull());
             } else if (name.Equals("pair?") && numArgs == 1) {
@@ -138,9 +141,9 @@ namespace Tree {
                 Console.WriteLine();
                 return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("eval") && numArgs == 2) {
-                return todo(name);
+                return argsList[0].eval(argsList[1] as Environment);
             } else if (name.Equals("apply") && numArgs == 2) {
-                return todo(name);
+                return argsList[0].apply(argsList[1] as Environment);
             } else if (name.Equals("interaction-environment") && numArgs == 0) {
                 return Scheme4101.interactionEnv;
             } else if (name.Equals("load") && numArgs == 1) {
@@ -176,15 +179,15 @@ namespace Tree {
             // +---+-------------------------+-----------------+
             // | x | b<                      | 2: int int      |
             // +---+-------------------------+-----------------+
-            // |   | car                     | 1: list         |
+            // | x | car                     | 1: list         |
             // +---+-------------------------+-----------------+
-            // |   | cdr                     | 1: list         |
+            // | x | cdr                     | 1: list         |
             // +---+-------------------------+-----------------+
-            // |   | cons                    | 1: list         |
+            // | x | cons                    | 1: list         |
             // +---+-------------------------+-----------------+
-            // |   | set-car!                | 1: list         |
+            // | x | set-car!                | 1: list         |
             // +---+-------------------------+-----------------+
-            // |   | set-cdr!                | 1: list         |
+            // | x | set-cdr!                | 1: list         |
             // +---+-------------------------+-----------------+
             // | x | null?                   | 1: node         |
             // +---+-------------------------+-----------------+
@@ -202,9 +205,9 @@ namespace Tree {
             // +---+-------------------------+-----------------+
             // | x | newline                 | 0               |
             // +---+-------------------------+-----------------+
-            // |   | eval                    | 2: List Env     |
+            // | x | eval                    | 2: List Env     |
             // +---+-------------------------+-----------------+
-            // |   | apply                   | 2: Closure List |
+            // | x | apply                   | 2: Closure List |
             // +---+-------------------------+-----------------+
             // | x | interaction-environment | 0               |
             // +---+-------------------------+-----------------+

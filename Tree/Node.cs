@@ -77,6 +77,17 @@ namespace Tree {
             return argsList;
         }
 
+        public static int countNodes(Node exp) {
+            return countNodes(exp, 0);
+        }
+
+        private static int countNodes(Node exp, int count) {
+            Node cdr  = exp.getCdr();
+            if (cdr.isNull())
+                return count;
+            return countNodes(cdr, count + 1);
+        }
+
         public static Node nilNodeWithErrorMsg(Object msg) {
             Console.Error.WriteLine(msg);
             return Nil.getInstance();

@@ -8,8 +8,10 @@ namespace Tree {
 
         // TODO: implement eval
         public override Node eval(Node exp, Environment env) {
-            Console.Error.WriteLine("TODO: Cond.eval() not implemented");
-            return Nil.getInstance();
+            if (Node.countNodes(exp) < 1)
+                return Node.nilNodeWithErrorMsg(
+                    "Error: invalid expression");
+            return Node.nilNodeWithErrorMsg("TODO:Cond.eval");
         }
 
         public override void print(Node t, int n, bool p) {
@@ -17,3 +19,7 @@ namespace Tree {
         }
     }
 }
+
+// (cond 
+//   ((b< 2 3) 'a)
+//   ((b< 3 2) 'b))

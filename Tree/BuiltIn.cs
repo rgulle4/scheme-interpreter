@@ -129,7 +129,7 @@ namespace Tree {
             } else if (name.Equals("read") && numArgs == 0) {
                 return (Node) Scheme4101.parser.parseExp();
             } else if (name.Equals("write") && numArgs == 1) {
-                argsList[0].print(0);
+                argsList[0].print(-1);
                 return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("display") && numArgs == 1) {
                 StringLit.SHOULD_PRINT_QUOTES = false;

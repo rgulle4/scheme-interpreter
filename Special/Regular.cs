@@ -17,17 +17,15 @@ namespace Tree {
             );
         }
         
+        // TODO: figure out if this is really done
+        // rn, get to this by 
+        // (eval '(b+ 3 4) (interaction-environment)) => 7 
         public override Node eval(Node exp, Environment env) {
-            if (exp.isNull() || env.isNull()) { 
-                Console.Error.WriteLine("ERROR: cant eval regular");
-                return Nil.getInstance();
-            }
+            if (exp.isNull() || env.isNull())
+                return Node.nilNodeWithErrorMsg("Error: invalid expression (TODO see Regular)");
             Node car = exp.getCar();
             Node cdr = exp.getCdr();
-            // TODO: finish Regular.eval().
             return car.eval(env).apply(evalRecursive(cdr, env));
-            // Console.Error.WriteLine("ERROR: cant eval regular");
-            // return Nil.getInstance();
         }
         
         public override void print(Node t, int n, bool p) {

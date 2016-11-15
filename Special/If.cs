@@ -6,7 +6,6 @@ namespace Tree {
     public class If : Special {
         public If() { }
         
-        // TODO: implement eval
         public override Node eval(Node exp, Environment env) {
             Node condition = exp.getCdr().getCar();
             Node ifTrue = exp.getCdr().getCdr().getCar();

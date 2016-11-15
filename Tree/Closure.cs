@@ -38,9 +38,12 @@ namespace Tree {
             Console.WriteLine('}');
         }
 
-        // TODO: The method apply() should be defined in class Node
-        // to report an error.  It should be overridden only in classes
-        // BuiltIn and Closure.
+        // apply() should be overridden only in classes BuiltIn and Closure.
+        // In Closure, apply() needs to perform the following tasks:
+        //   - extract the environment out of the closure
+        //   - add a new frame to the environment that binds the parameters 
+        //     to the corresponding argument values.
+        //   - recursively call eval for the fn body and the new environment.
         public override Node apply(Node args) {
             return new StringLit("Error: Closure.apply not yet implemented");
         }

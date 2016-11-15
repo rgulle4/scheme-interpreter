@@ -100,6 +100,13 @@ namespace Tree {
                     bool result = arg1.getIntVal() < arg2.getIntVal();
                     return BoolLit.getInstance(result);
                 }
+            // } else if (name.Equals("b>") && numArgs == 2) {
+            //     Node arg1 = argsList[0];
+            //     Node arg2 = argsList[1];
+            //     if (arg1.isNumber() && arg2.isNumber()) {
+            //         bool result = arg1.getIntVal() > arg2.getIntVal();
+            //         return BoolLit.getInstance(result);
+            //     }
             } else if (name.Equals("car") && numArgs == 1) {
                 return argsList[0].getCar();
             } else if (name.Equals("cdr") && numArgs == 1) {

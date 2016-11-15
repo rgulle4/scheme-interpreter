@@ -42,11 +42,10 @@ namespace Tree {
 
         private static Node todo(String name) {
             return Node.nilNodeWithErrorMsg(
-                "TODO: BuiltIn " + name + "not implemented yet.");
+                "BuiltIn " + name + "not implemented yet.");
         }
 
         // This is overridden only in classes BuiltIn and Closure.
-        // TODO: finish this
         public override Node apply(Node args) {
             String name = symbol.getName().ToLower();
 

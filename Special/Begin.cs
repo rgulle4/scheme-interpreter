@@ -8,8 +8,14 @@ namespace Tree {
 
         // TODO: implement eval
         public override Node eval(Node exp, Environment env) {
-            Console.Error.WriteLine("TODO: eval not implemented");
-            return Nil.getInstance();
+            Node expList = exp.getCdr();
+            Node last = expList.getCar().eval(env);
+            if(expList == Nil.getInstance())
+            {
+                return last;
+            }
+            expList = expList.getCdr();
+            return expList.getCar().eval(env);
         }
 
         public override void print(Node t, int n, bool p) {

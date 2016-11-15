@@ -1,10 +1,19 @@
-(cond ((> 3 2) 'greater)
-      ((< 3 2) 'less))
+(display "------ should be => a -----------")
+(cond 
+  ((b< 2 3) 'a)
+  ((b< 3 2) 'b))
+
+;; (display "------ should be => c -----------")
           
-; =>  greater
+;; (cond 
+;;   ((b< 3 3) 'a)
+;;   ((b< 3 3) 'b)
+;;   (else 'c))
 
-(cond ((> 3 3) 'greater)
-      ((< 3 3) 'less)
-      (else 'equal))
+;; (display "------ should be => c -----------")
 
-; =>  equal
+;; (cond 
+;;   ((b< 3 3) 'a)
+;;   ((b< 3 3) 'b)
+;;   ((b= 3 3) 'c)
+;;   (else     'd)

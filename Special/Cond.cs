@@ -8,7 +8,7 @@ namespace Tree {
 
         // TODO: implement eval
         public override Node eval(Node exp, Environment env) {
-            Console.Error.WriteLine("TODO: eval not implemented");
+            Console.Error.WriteLine("TODO: Cond.eval() not implemented");
             return Nil.getInstance();
         }
 
@@ -17,5 +17,3 @@ namespace Tree {
         }
     }
 }
-
-

@@ -133,7 +133,7 @@ namespace Tree {
                 return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("display") && numArgs == 1) {
                 StringLit.SHOULD_PRINT_QUOTES = false;
-                argsList[0].print(0);
+                argsList[0].print(-1);
                 StringLit.SHOULD_PRINT_QUOTES = true;
                 return new StringLit("#{Unspecific}", false);
             } else if (name.Equals("newline") && numArgs == 0) {

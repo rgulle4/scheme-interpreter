@@ -6,7 +6,6 @@ namespace Tree {
     public class Set : Special {
         public Set() { }
                 
-        // TODO: implement eval
         public override Node eval(Node exp, Environment env) {
             Node varName = exp.getCdr().getCar();
             Node newVarValue = exp.getCdr().getCdr().getCar();

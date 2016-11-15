@@ -15,7 +15,7 @@ namespace Tree {
     public class Closure : Node {
         private Node fun;          // a lambda expression
         private Environment env;   // the environment in which
-                                   // the function was defined
+                                   //   the function was defined
 
         public Closure(Node f, Environment e) { fun = f;  env = e; }
 

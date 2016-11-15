@@ -6,12 +6,10 @@ namespace Tree {
     public class Let : Special {
         public Let() { }
         
-        // TODO: implement eval
         public override Node eval(Node exp, Environment env) {
             Node bindings = exp.getCdr().getCar();
             Environment next = new Environment(env);
-            while (bindings != Nil.getInstance())
-            {
+            while (bindings != Nil.getInstance()) {
                 Node pair = bindings.getCar();
                 next.define(pair.getCar(), pair.getCdr().getCar().eval(next));
                 bindings = bindings.getCdr();

@@ -6,7 +6,6 @@ namespace Tree {
     public class Cond : Special {
         public Cond() { }
 
-        // TODO: implement eval
         public override Node eval(Node exp, Environment env) {
             if (Node.countNodes(exp) < 1)
                 return Node.nilNodeWithErrorMsg(
@@ -14,45 +13,20 @@ namespace Tree {
             return evalRecursive(exp.getCdr(), env);
         }
 
+        // TODO: handle bad inputs better
         private Node evalRecursive(Node exp, Environment env) {
-            // Console.WriteLine(" -- Entered evalRecursive() -- ");
-            // exp.print(0);
             if (exp.isNull()) {
                 StringLit.SHOULD_PRINT_QUOTES = true;
                 return new StringLit("#{Unspecific}", false);
             }
-
-        
             Node branch = exp.getCar();
-
             Node branchCond = branch.getCar();
-            // Console.Write("branchCond: ");
-            // branchCond.print(0);
-
             Node branchExpr = branch.getCdr();
-            // Console.Write("branchExpr: ");
-            // branchExpr.print(0);
-            
+            if (branchCond.getName().Equals("else"))
+                return branchExpr.getCar().eval(env);
+            if (branchCond.eval(env) == BoolLit.getInstance(true))
+                return branchExpr.getCar().eval(env);
             Node rest = exp.getCdr();
-            // Console.Write("rest: ");
-            // rest.print(0);
-
-            // eval else
-            if (branchCond.getName().Equals("else")) {
-                return branchExpr.getCar().eval(env);
-            }
-            // Node branchCondEvald = branchCond.eval(env);
-            // Console.Write("branchCondEval: ");
-            // branchCondEvald.print(0);
-
-            // Node branchExprEvald = branchExpr.getCar().eval(env);
-            // Console.Write("branchExprEvald: ");
-            // branchExprEvald.print(0);
-
-            if (branchCond.eval(env) == BoolLit.getInstance(true)) {
-                return branchExpr.getCar().eval(env);
-            }
-
             return evalRecursive(rest, env);
         }
 
@@ -61,7 +35,3 @@ namespace Tree {
         }
     }
 }
-
-// (cond 
-//   ((b< 2 3) 'a)
-//   ((b< 3 2) 'b))

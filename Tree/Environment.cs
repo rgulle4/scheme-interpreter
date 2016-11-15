@@ -112,13 +112,12 @@ namespace Tree {
         // be updated instead of returned.
         public void assign(Node id, Node val) {
             Node oldVal = find(id, frame);
-            if (oldVal.isNull() && env == null) {
+            if (oldVal.isNull() && env == null)
                 Console.Error.WriteLine("undefined variable " + id.getName());
-            } else if (oldVal.isNull()) {
+            else if (oldVal.isNull())
                 env.assign(id, val);
-            } else {
+            else
                 oldVal.setCar(val);
-            }
         }
     }
 }

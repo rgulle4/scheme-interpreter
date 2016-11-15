@@ -22,7 +22,8 @@ namespace Tree {
                 StringLit.SHOULD_PRINT_AT_ALL = false;
                 return new StringLit("");
             }
-
+            
+            // define a function
             if (argsList[0].isPair() && numArgs >= 2) {
                 Node fnSignature = argsList[0];
                 Node fnBody = exp.getCdr().getCdr();

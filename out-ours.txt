@@ -24,16 +24,16 @@
 > > 
 Unhandled Exception:
 System.NullReferenceException: Object reference not set to an instance of an object
-  at Tree.Closure.setUpFrame (Tree.Node lambdaArgs, Tree.Node args, Tree.Environment env) <0x40bcfb20 + 0x00061> in <filename unknown>:0 
-  at Tree.Closure.apply (Tree.Node args) <0x40bcfa30 + 0x000af> in <filename unknown>:0 
-  at Tree.BuiltIn.apply (Tree.Node args) <0x40bcd070 + 0x01037> in <filename unknown>:0 
-  at Tree.Regular.eval (Tree.Node exp, Tree.Environment env) <0x40bccb30 + 0x000ab> in <filename unknown>:0 
-  at Tree.Cons.eval (Tree.Environment env) <0x40bccb00 + 0x00024> in <filename unknown>:0 
-  at Scheme4101.Main (System.String[] args) <0x40bc7e60 + 0x003c4> in <filename unknown>:0 
+  at Tree.Closure.setUpFrame (Tree.Node lambdaArgs, Tree.Node args, Tree.Environment env) <0x40b48b20 + 0x00061> in <filename unknown>:0 
+  at Tree.Closure.apply (Tree.Node args) <0x40b48a30 + 0x000af> in <filename unknown>:0 
+  at Tree.BuiltIn.apply (Tree.Node args) <0x40b46070 + 0x01037> in <filename unknown>:0 
+  at Tree.Regular.eval (Tree.Node exp, Tree.Environment env) <0x40b45b30 + 0x000ab> in <filename unknown>:0 
+  at Tree.Cons.eval (Tree.Environment env) <0x40b45b00 + 0x00024> in <filename unknown>:0 
+  at Scheme4101.Main (System.String[] args) <0x40b40e60 + 0x003c4> in <filename unknown>:0 
 [ERROR] FATAL UNHANDLED EXCEPTION: System.NullReferenceException: Object reference not set to an instance of an object
-  at Tree.Closure.setUpFrame (Tree.Node lambdaArgs, Tree.Node args, Tree.Environment env) <0x40bcfb20 + 0x00061> in <filename unknown>:0 
-  at Tree.Closure.apply (Tree.Node args) <0x40bcfa30 + 0x000af> in <filename unknown>:0 
-  at Tree.BuiltIn.apply (Tree.Node args) <0x40bcd070 + 0x01037> in <filename unknown>:0 
-  at Tree.Regular.eval (Tree.Node exp, Tree.Environment env) <0x40bccb30 + 0x000ab> in <filename unknown>:0 
-  at Tree.Cons.eval (Tree.Environment env) <0x40bccb00 + 0x00024> in <filename unknown>:0 
-  at Scheme4101.Main (System.String[] args) <0x40bc7e60 + 0x003c4> in <filename unknown>:0 
+  at Tree.Closure.setUpFrame (Tree.Node lambdaArgs, Tree.Node args, Tree.Environment env) <0x40b48b20 + 0x00061> in <filename unknown>:0 
+  at Tree.Closure.apply (Tree.Node args) <0x40b48a30 + 0x000af> in <filename unknown>:0 
+  at Tree.BuiltIn.apply (Tree.Node args) <0x40b46070 + 0x01037> in <filename unknown>:0 
+  at Tree.Regular.eval (Tree.Node exp, Tree.Environment env) <0x40b45b30 + 0x000ab> in <filename unknown>:0 
+  at Tree.Cons.eval (Tree.Environment env) <0x40b45b00 + 0x00024> in <filename unknown>:0 
+  at Scheme4101.Main (System.String[] args) <0x40b40e60 + 0x003c4> in <filename unknown>:0 

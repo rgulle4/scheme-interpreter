@@ -14,10 +14,12 @@ make
 cat $INPUT_FILE | mono Scheme4101-reference.exe > out-reference.txt 2>&1
 cat $INPUT_FILE | mono Scheme4101.exe > out-ours.txt 2>&1
 
-echo > out-diff.txt
-echo "# diff for output of Scheme4101-reference.exe vs our Scheme4101.exe" >> out-diff.txt
+echo "# diff for output of Scheme4101-reference.exe vs our Scheme4101.exe" > out-diff.txt
 echo "# Using input file: $INPUT_FILE" >> out-diff.txt
+echo "# Reference output: out-reference.txt" >> out-diff.txt
+echo "# Our output: out-ours.txt" >> out-diff.txt
 $DIFF_TOOL out-reference.txt out-ours.txt >> out-diff.txt
-echo "Begin diff (in out-diff.txt)..."
+echo "# ------------------------------"
+echo "# Begin diff (see out-diff.txt)..."
 cat out-diff.txt
-echo "End diff (in out-diff.txt)..."
+echo "# End diff (see out-diff.txt)..."

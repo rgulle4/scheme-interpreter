@@ -1,4 +1,4 @@
-;; a test scheme file
+;; a "serious" test file
 
 
 ;; -- interaction-environment --------------- ;;

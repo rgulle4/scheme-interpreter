@@ -1,3 +1,4 @@
+;; testing (cond)
 (display "------ should be => a -----------")
 (display "(cond   ((b< 2 3) 'a)    ((b< 3 2) 'b))")
 (cond 

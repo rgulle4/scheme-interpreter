@@ -1,11 +1,14 @@
+;; This is a simple test file
 (display "/ -- Test1 ------------------ ")
 (display "/ print the integer constant 42 ")
+42
 (display 42)
 (write 42)
 
 
 (display "/ -- Test2 ------------------ ")
 (display "/ print the list '(Hello World!)")
+'("Hello" "World!")
 (display '("Hello" "World!"))
 (write '("Hello" "World!"))
 

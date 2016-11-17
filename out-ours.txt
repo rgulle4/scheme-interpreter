@@ -1,0 +1,39 @@
+> #{Environment
+()
+    #{Environment
+        ((load #{Built-in Procedure load}) (interaction-environment #{Built-in Procedure interaction-environment}) (apply #{Built-in Procedure apply}) (eval #{Built-in Procedure eval}) (newline #{Built-in Procedure newline}) (display #{Built-in Procedure display}) (write #{Built-in Procedure write}) (read #{Built-in Procedure read}) (procedure? #{Built-in Procedure procedure?}) (eq? #{Built-in Procedure eq?}) (pair? #{Built-in Procedure pair?}) (null? #{Built-in Procedure null?}) (set-cdr! #{Built-in Procedure set-cdr!}) (set-car! #{Built-in Procedure set-car!}) (cons #{Built-in Procedure cons}) (cdr #{Built-in Procedure cdr}) (car #{Built-in Procedure car}) (b< #{Built-in Procedure b<}) (b= #{Built-in Procedure b=}) (b/ #{Built-in Procedure b/}) (b* #{Built-in Procedure b*}) (b- #{Built-in Procedure b-}) (b+ #{Built-in Procedure b+}) (number? #{Built-in Procedure number?}) (symbol? #{Built-in Procedure symbol?}))
+    }
+}
+> 8
+> > > > 84
+> #t
+> #f
+> #t
+> #t
+> #t
+> > #t
+> #f
+> 13
+> 6
+> 24
+> 2
+> #t
+> #f
+> #f
+> #t
+> > 
+Unhandled Exception:
+System.NullReferenceException: Object reference not set to an instance of an object
+  at Tree.Closure.setUpFrame (Tree.Node lambdaArgs, Tree.Node args, Tree.Environment env) <0x40bcfb20 + 0x00061> in <filename unknown>:0 
+  at Tree.Closure.apply (Tree.Node args) <0x40bcfa30 + 0x000af> in <filename unknown>:0 
+  at Tree.BuiltIn.apply (Tree.Node args) <0x40bcd070 + 0x01037> in <filename unknown>:0 
+  at Tree.Regular.eval (Tree.Node exp, Tree.Environment env) <0x40bccb30 + 0x000ab> in <filename unknown>:0 
+  at Tree.Cons.eval (Tree.Environment env) <0x40bccb00 + 0x00024> in <filename unknown>:0 
+  at Scheme4101.Main (System.String[] args) <0x40bc7e60 + 0x003c4> in <filename unknown>:0 
+[ERROR] FATAL UNHANDLED EXCEPTION: System.NullReferenceException: Object reference not set to an instance of an object
+  at Tree.Closure.setUpFrame (Tree.Node lambdaArgs, Tree.Node args, Tree.Environment env) <0x40bcfb20 + 0x00061> in <filename unknown>:0 
+  at Tree.Closure.apply (Tree.Node args) <0x40bcfa30 + 0x000af> in <filename unknown>:0 
+  at Tree.BuiltIn.apply (Tree.Node args) <0x40bcd070 + 0x01037> in <filename unknown>:0 
+  at Tree.Regular.eval (Tree.Node exp, Tree.Environment env) <0x40bccb30 + 0x000ab> in <filename unknown>:0 
+  at Tree.Cons.eval (Tree.Environment env) <0x40bccb00 + 0x00024> in <filename unknown>:0 
+  at Scheme4101.Main (System.String[] args) <0x40bc7e60 + 0x003c4> in <filename unknown>:0 
